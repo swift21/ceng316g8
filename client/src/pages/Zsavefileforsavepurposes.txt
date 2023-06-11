@@ -1,0 +1,188 @@
+import logo from "../img/iyte_logo-tur.png";
+import { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import { useSelector } from "react-redux";
+
+const getURL = "http://localhost:5000/api/allcandidates/";
+const voteAddURL = "http://localhost:5000/api/addvoter";
+const voterURL = "http://localhost:5000/api/voters";
+
+function VoteCandidate() {
+  const [auth, setAuth] = useState(localStorage.getItem("auth") || false);
+  const [database, setDatabase] = useState([]); // Initialize as an empty array
+  const [userVoted, setUserVoted] = useState(false);
+  const currentUsername = localStorage.getItem("currentUsername");
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.setItem("auth", false);
+    setAuth(false);
+  };
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("auth") === "true";
+    setAuth(isAuthenticated);
+
+    fetch(getURL)
+      .then((response) => response.json())
+      .then((data) => {
+        setDatabase(data); // Set the fetched data to the database state
+        // Store the fetched data for later use
+        localStorage.setItem("fetchedData", JSON.stringify(data));
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch the data from the voterURL
+    fetch(voterURL)
+      .then((response) => response.json())
+      .then((data) => {
+        // Check if any username in the data matches the currentUsername
+        const hasVoted = data.some((user) => user.username === currentUsername);
+        setUserVoted(hasVoted); // Set userVoted based on the result
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [currentUsername]);
+
+  const currentID = localStorage.getItem("currentID");
+  const [info, setInfo] = useState({
+    username: "",
+    votedCandidate: "",
+  });
+
+  const handleVoteToggle = async () => {};
+
+  const handleVote = async (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    try {
+      console.log("Sending vote info:", info);
+
+      if (userVoted) {
+        console.log("you already voted");
+      } else if (!userVoted) {
+        console.log("currently voting");
+        const response = await fetch(voteAddURL, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: info.username,
+          }),
+        });
+      } else {
+        console.log("kek");
+      }
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error registering vote:", error);
+      // Handle the error appropriately
+
+      navigate("/dashboard");
+    }
+  };
+
+  const storedData = localStorage.getItem("fetchedData");
+
+  // Parse the stored data back into an object
+  const data = storedData ? JSON.parse(storedData) : null;
+
+  if (!auth) {
+    return <Navigate replace to="/" />;
+  } else {
+    return (
+      <div>
+        <div className="flex space-x-5 h-15 bg-red-700 sticky top-0 z-50">
+          <a href="/dashboard">
+            <img src={logo} alt="logo" className="logo" />
+          </a>
+
+          <h1 className="text-4xl pt-3 w-2/4 text-white">
+            IZTECH Student <br />
+            Representative Election System
+          </h1>
+          <div className="navbox right-0 top-0 inset-y-0 pr-6 pt-8 absolute">
+            <div className="">
+              <Button fn={logout}>Log out</Button>
+            </div>
+            <div className=" pt-2">
+              <a href="/dashboard">
+                <Button>Back</Button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <form>
+          <div className="new-candidate-container">
+            {data && data.length > 0 ? (
+              <div className="new-candidate-list">
+                {data.map((candidate) => (
+                  <div className="new-test-container">
+                    <img
+                      src={`data:image/png;base64, ${candidate.image}`}
+                      alt="Base64 Image"
+                    />
+
+                    <div key={candidate._id} className="new-candidate-info2">
+                      <p>
+                        <span style={{ fontWeight: "bold", color: "#9a0e20" }}>
+                          Name:
+                        </span>{" "}
+                        {candidate.name}
+                      </p>
+
+                      <p>
+                        <span style={{ fontWeight: "bold", color: "#9a0e20" }}>
+                          Surname:
+                        </span>{" "}
+                        {candidate.surname}
+                      </p>
+
+                      <p>
+                        <span style={{ fontWeight: "bold", color: "#9a0e20" }}>
+                          Student Number:
+                        </span>{" "}
+                        {candidate.studentnumber}
+                      </p>
+                    </div>
+
+                    <input
+                      className="new-checkbox-vote"
+                      type="radio"
+                      name="candidate-selection"
+                      value={candidate._id}
+                      style={{ transform: "scale(1)" }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No candidate data available.</p>
+            )}
+          </div>
+          {
+            <button
+              type="submit"
+              className="submit-button"
+              id="login-form-submit"
+              onClick={handleVote}
+            >
+              Submit
+            </button>
+          }
+        </form>
+      </div>
+    );
+  }
+}
+
+export default VoteCandidate;

@@ -1,0 +1,451 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button-default {
+  background-color: #9a0e20;
+  color: white;
+  border: 2px solid;
+  padding: 20px 40px;
+  margin: 10px;
+  font-size: 3em;
+  font-family: "Inter", sans-serif;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 1px 1px 5px black;
+}
+.navbox {
+  width: fit-content;
+  position: absolute;
+}
+
+.navbox button {
+  width: 100%;
+  height: 100%;
+}
+
+/* Center the buttons */
+.button-container-top {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.approve-reject-button {
+  background-color: #005ea3;
+  color: white;
+  border: 2px solid;
+  padding: 20px 40px;
+  margin: 30px;
+  font-family: "Inter", sans-serif;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 1px 1px 5px black;
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: white;
+}
+
+.navigation-button {
+  background-color: #b91c1c;
+  color: white;
+  border: 2px solid;
+  padding: 20px 40px;
+  font-family: "Inter", sans-serif;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 1px 1px 5px black;
+  width: 300px;
+  height: 200px;
+  font-size: 2em;
+  color: white;
+  margin: 30px;
+}
+
+.switch-button {
+  background-color: #b91c1c;
+  color: white;
+  border: 2px solid;
+  padding: 20px 40px;
+  font-family: "Inter", sans-serif;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 1px 1px 5px black;
+  width: 200px;
+  height: 100px;
+  font-size: 2em;
+  color: white;
+}
+/* Customize the logo */
+.logo-container {
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+a:link {
+  text-decoration: none;
+}
+.logo {
+  height: auto;
+  max-height: 150px;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 3vw;
+  margin: 0;
+  font-weight: 200;
+  font-family: "Oswald", sans-serif;
+}
+
+/* Customize the bottom bar */
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* Customize the logout button */
+.logout-button {
+  background-color: #9a0e20;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  border-radius: 0px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-text-stroke: 0.2px black;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+/* Change logout button color on hover */
+.logout-button:hover {
+  background-color: #005ea3;
+}
+
+/* Customize the login message */
+.login-message {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.candidate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  max-width: 50%;
+  margin: 30px auto;
+  padding: 20px;
+}
+.new-candidate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  max-width: 90%;
+  margin: 10px auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+.red-border {
+  width: fit-content;
+  height: fit-content;
+  border-width: 2px;
+  border-color: #9a0e20;
+}
+.test-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  max-width: 45%;
+  max-height: 45%;
+  margin: 30px auto;
+  padding-bottom: 50px;
+}
+.new-test-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-width: 4px;
+  border-color: #9a0e20;
+  max-height: 45%;
+  min-height: 250px;
+  margin: 10px auto;
+}
+
+.test-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+.new-test-container img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border: none;
+}
+
+.new-candidate-list {
+  width: 900px;
+}
+
+.candidate-info {
+  border: 2px solid #9a0e20;
+  width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.candidate-info2 {
+  position: relative;
+  border: 3px solid #9a0e20;
+  position: relative;
+  width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+.new-candidate-info2 {
+  position: relative;
+  border-left: 3px solid #9a0e20;
+  border-right: 3px solid #9a0e20;
+  max-height: 45%;
+  min-height: 250px;
+  height: inherit;
+  width: 45%;
+  padding: 20px;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.vl {
+  position: -webkit-sticky;
+  margin-right: 100%;
+  margin-left: 100%;
+  border-left: 6px solid green;
+  flex-direction: column;
+  height: 300px;
+}
+
+input.checkbox-vote {
+  flex-direction: column;
+  position: relative;
+  height: 100px;
+  width: 100px;
+}
+input.new-checkbox-vote {
+  height: 75px;
+  width: 75px;
+}
+
+.submit-button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  bottom: 30px;
+
+  background-color: #9a0e20;
+  color: white;
+  border: none;
+
+  margin: 0 0px;
+  font-size: 16px;
+  border-radius: 0px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-text-stroke: 0.2px black;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-button.disabled {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  color: white;
+  border: none;
+  margin: 0 0px;
+  font-size: 16px;
+  border-radius: 0px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-text-stroke: 0.2px black;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.submit-button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  bottom: 30px;
+
+  background-color: #9a0e20;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  border-radius: 0px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-text-stroke: 0.2px black;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content {
+  font-size: 48px;
+}
+
+.approve-reject-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: left;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.fullscreen-button {
+  background-color: #005ea3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 0px;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-text-stroke: 0.2px black;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+.back-log-button {
+  background-color: #005ea3;
+  color: white;
+  border: 2px solid;
+  padding: 20px 20px;
+  margin: 30px;
+  font-family: "Inter", sans-serif;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 1px 1px 5px black;
+  display: flex;
+  width: 100px;
+  font-size: 2em;
+  color: white;
+}
+
+.back-log-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* DateTimePicker.css */
+.custom-datetime-picker {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+
+.custom-datetime-picker input {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  margin: auto;
+}
+
+.custom-datetime-picker .rdtPicker {
+  position: absolute;
+  top: 40px; /* Adjust the positioning based on your layout */
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.fitted {
+  width: fit-content;
+  margin: auto;
+}
